@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        // $user_id = auth()->user()->id;
-        // return $user_id;
-        $title = 'Welcome to FirstBlog by Jalpesh!!';
+
+        // My custom condition added
+        if(auth()->user()->id){
+            $title = 'Welcome '.auth()->user()->name ;
+        }else{
+            $title = 'Welcome to FirstBlog by Jalpesh!!';
+        }
+        
         // return view('pages.index', compact('title'));
         return view('pages.index')->with('title', $title);
     }
