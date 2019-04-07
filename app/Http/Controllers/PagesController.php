@@ -3,27 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class PagesController extends Controller
 {
 
     public function index(){
 
-        // My custom condition added
-        // if(Auth::guest()){
-        //     $title = 'Welcome to FirstBlog by Jalpesh!!';
-        // }else{
-        //     $title = 'Welcome '.auth()->user()->name ;
-        // }
-        // if(auth()->user()->id){
-        //     $title = 'Welcome '.auth()->user()->name ;
-        // }else{
-        //     $title = 'Welcome to FirstBlog by Jalpesh!!';
-        // }
-        // $user_id = auth()->user()->id;
-        // echo $user_id;
-        $title = 'Welcome to FirstBlog by Jalpesh!!';
-        // return view('pages.index', compact('title'));
+        //My custom condition added
+        if(Auth::guest()){
+            $title = 'Welcome to FirstBlog by Jalpesh!!';
+        }else{
+            $title = 'Welcome '.auth()->user()->name ;
+        }
+        
         return view('pages.index')->with('title', $title);
     }
 

@@ -2,11 +2,7 @@
 
 @section('content')
     <div class="jumbotron text-center">
-        @if (Auth::guest()) 
-            <h1>{{$title}}</h1>
-        @else 
-            <h1>Welcome {{Auth::user()->name}}</h1>
-        @endif
+        <h1>{{$title}}</h1>
         <p>You can write your post on any topics or can read the blogs that posted by others </p>
         @if (Auth::guest())  
             <p>
