@@ -6,15 +6,23 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+
     public function index(){
 
         // My custom condition added
-        if(auth()->user()->id){
-            $title = 'Welcome '.auth()->user()->name ;
-        }else{
-            $title = 'Welcome to FirstBlog by Jalpesh!!';
-        }
-        
+        // if(Auth::guest()){
+        //     $title = 'Welcome to FirstBlog by Jalpesh!!';
+        // }else{
+        //     $title = 'Welcome '.auth()->user()->name ;
+        // }
+        // if(auth()->user()->id){
+        //     $title = 'Welcome '.auth()->user()->name ;
+        // }else{
+        //     $title = 'Welcome to FirstBlog by Jalpesh!!';
+        // }
+        // $user_id = auth()->user()->id;
+        // echo $user_id;
+        $title = 'Welcome to FirstBlog by Jalpesh!!';
         // return view('pages.index', compact('title'));
         return view('pages.index')->with('title', $title);
     }
