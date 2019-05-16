@@ -10,40 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'EventsController@index');
 
-Route::get('/hello', function () {
-    return "Hello World";
-});
-
-Route::get('/users/{id}', function($id) {
-    return 'This is user '.$id;
-});
-
-Route::get('/users/{id}/{name}', function($id, $name) {
-    return 'This is user '.$name. ' with an id '.$id;
-});
-
-Route::get('/about', function (){
-    return view('pages.about');
-});
-*/
-
-Route::get('/', 'PagesController@index');
-
-Route::get('/about', 'PagesController@about');
-
-Route::get('/services', 'PagesController@services');
-
-Route::resource('posts', 'PostsController');
-
-
-
-
+Route::resource('events', 'EventsController');
 
 Auth::routes();
 

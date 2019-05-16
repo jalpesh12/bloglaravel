@@ -1,39 +1,52 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
-
                 <div class="panel-body">
-                    <a href="/posts/create" class="btn btn-primary">Create Post</a>
-                    <h3>Your Blog posts</h3>
+                    <a href="/events/create" class="btn btn-primary">Create Event</a>
+                    <h3>Your Upcoming Events</h3>
                     <table class="table table-striped">
-                        @if (count($posts) > 0)
+                        @if (count($events) > 0)
                             <tr>
-                                <th>Title</th>
-                                <th></th>
-                                <th></th>
+                                    <th>Event Desc</th>
+                                    <th>Event Type</th>
+                                    <th>Event Date</th>
+                                    <th>Venue Name</th>
+                                    <th>Distane to Venue</th>
+                                    <th>Travel Time via Car</th>
+                                    <th>Actions</th>
+                                    <th></th>
+                                    <th></th>
                             </tr>
-                            @foreach ($posts as $post)
+                            @foreach ($events as $event)
                                 <tr>
-                                    <td>{{$post->title}}</td>
-                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a> </td >
+                                    <td>{{$event->description}}</td>
+                                    <td>{{$event->eventtype}}</td>
+                                    <td>{{$event->evendatetime}}</td>
+                                    <td>{{$event->venue}}</td>
+                                    <td>{{$event->distancefromschool}}</td>
+                                    <td>{{$event->duration}}</td>
+
+
+                                    <td><a href="/events/{{$event->eventid}}/edit" class="btn btn-default">Edit</a> </td>
+                                    <td><a href="/events/{{$event->eventid}}" class="btn btn-default">Show Details</a> </td>
                                     <td>
-                                        {!! Form::open(['action'=> ['PostsController@destroy', $post->id], 'method'=>'POST', 'class'=>'pull-right' ]) !!}
+                                        {!! Form::open(['action'=> ['EventsController@destroy', $event->eventid], 'method'=>'POST', 'class'=>'pull-right' ]) !!}
                                             {{Form::hidden('_method', 'DELETE')}}
                                             {{Form::submit('Delete', ['class'=> 'btn btn-danger'])}}
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
+                                
                             @endforeach
                         @else
-                            <p>You have no post</p>
+                            <p>There are no events</p>
                         @endif
-
                     </table>
+                    {{$events->links()}}
                 </div>
             </div>
         </div>

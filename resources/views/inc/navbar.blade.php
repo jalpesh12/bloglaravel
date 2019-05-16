@@ -24,9 +24,7 @@
 
                 <ul class="nav navbar-nav">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/about">About us</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/posts">Blog</a></li>
+                        <li><a href="/dashboard">Events</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

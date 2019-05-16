@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Event;
 
 class DashboardController extends Controller
 {
@@ -24,8 +24,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        return view('dashboard')->with('posts', $user->posts);
+        // $events = Event:find();
+        $events = Event::orderBy('created_at', 'desc')->paginate(2);
+        // $events = Event::all()->paginate(10);
+        
+        return view('dashboard')->with('events', $events);
     }
 }

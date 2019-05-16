@@ -3,7 +3,7 @@
 @section('content')
     <div class="jumbotron text-center">
         <h1>{{$title}}</h1>
-        <p>You can write your post on any topics or can read the blogs that posted by others </p>
+        <p>You can create events or activity for your School </p>
         @if (Auth::guest())  
             <p>
                 <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a> 
